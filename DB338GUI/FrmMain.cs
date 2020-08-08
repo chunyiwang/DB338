@@ -51,5 +51,11 @@ namespace DB338GUI
             }
             TxtResults.Text = s;
         }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            TxtQuery.Text = "";
+
+        }
     }
 }
