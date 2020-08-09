@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DB338Core
 {
@@ -44,7 +45,7 @@ namespace DB338Core
             }
             else if (type == "drop")
             {
-                results = ProcessDropStatement(tokens);
+                ProcessDropStatement(tokens);
             }
             else if (type == "update")
             {
@@ -68,6 +69,11 @@ namespace DB338Core
 
             for (int i = 1; i < tokens.Count; ++i)
             {
+                if (tokens[i] == "*" & i == 1)
+                {
+                    colsToSelect.AddRange(tokens);
+                    break;
+                }
                 if (tokens[i] == "from")
                 {
                     tableOffset = i + 1;
@@ -218,13 +224,27 @@ namespace DB338Core
 
         private string[,] ProcessUpdateStatement(List<string> tokens)
         {
+            string updateTableName = tokens[2];
+            foreach (IntSchTable tbl in tables)
+            {
+                if (tbl.Name == updateTableName)
+                {
+                    //cannot create a new table with the same name
+                    
+                }
+            }
             throw new NotImplementedException();
         }
 
-        private string[,] ProcessDropStatement(List<string> tokens)
+        private void ProcessDropStatement(List<string> tokens)
         {
-            throw new NotImplementedException();
-        }
+            string dropTableName = tokens[2];
+            if (getTable(dropTableName) != null) {
+                tables.Remove(getTable(dropTableName));
+                MessageBox.Show("Table " + dropTableName + " is successfully dropped");
+            }
+        } 
+            
 
         private string[,] ProcessDeleteStatement(List<string> tokens)
         {
@@ -234,6 +254,15 @@ namespace DB338Core
         private string[,] ProcessAlterStatement(List<string> tokens)
         {
             throw new NotImplementedException();
+        }
+
+        private IntSchTable getTable(string name)
+        {
+            if (tables.Find(x => x.Name == name) == null)
+            {
+                MessageBox.Show("Table " + name + " not found");
+            }
+            return tables.Find(x => x.Name == name);
         }
     }
 }
