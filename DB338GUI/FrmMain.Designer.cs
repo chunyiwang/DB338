@@ -1,4 +1,6 @@
-﻿namespace DB338GUI
+﻿using System.Windows.Forms;
+
+namespace DB338GUI
 {
     partial class FrmMain
     {
@@ -28,18 +30,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.TxtQuery = new System.Windows.Forms.TextBox();
             this.BtnSubmitQuery = new System.Windows.Forms.Button();
             this.TxtResults = new System.Windows.Forms.TextBox();
+            this.ResultSummary = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
-            this.LabelTime = new System.Windows.Forms.Label();
-            this.queryResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.queryResultBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ResultSummary = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtQuery
@@ -52,6 +48,7 @@
             this.TxtQuery.Size = new System.Drawing.Size(1006, 230);
             this.TxtQuery.TabIndex = 1;
             this.TxtQuery.Text = resources.GetString("TxtQuery.Text");
+            this.TxtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             // 
             // BtnSubmitQuery
             // 
@@ -66,13 +63,24 @@
             // 
             // TxtResults
             // 
-            this.TxtResults.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtResults.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtResults.Location = new System.Drawing.Point(18, 260);
             this.TxtResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtResults.Multiline = true;
             this.TxtResults.Name = "TxtResults";
-            this.TxtResults.Size = new System.Drawing.Size(1006, 335);
+            this.TxtResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TxtResults.Size = new System.Drawing.Size(1006, 217);
             this.TxtResults.TabIndex = 3;
+            // 
+            // ResultSummary
+            // 
+            this.ResultSummary.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResultSummary.Location = new System.Drawing.Point(18, 487);
+            this.ResultSummary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ResultSummary.Multiline = true;
+            this.ResultSummary.Name = "ResultSummary";
+            this.ResultSummary.Size = new System.Drawing.Size(1006, 114);
+            this.ResultSummary.TabIndex = 7;
             // 
             // Clear
             // 
@@ -84,48 +92,19 @@
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // LabelTime
-            // 
-            this.LabelTime.AutoSize = true;
-            this.LabelTime.Location = new System.Drawing.Point(753, 560);
-            this.LabelTime.Name = "LabelTime";
-            this.LabelTime.Size = new System.Drawing.Size(43, 20);
-            this.LabelTime.TabIndex = 5;
-            this.LabelTime.Text = "Time";
-            // 
-            // queryResultBindingSource
-            // 
-            this.queryResultBindingSource.DataSource = typeof(DB338Core.QueryResult);
-            // 
-            // queryResultBindingSource1
-            // 
-            this.queryResultBindingSource1.DataSource = typeof(DB338Core.QueryResult);
-            // 
-            // ResultSummary
-            // 
-            this.ResultSummary.AutoSize = true;
-            this.ResultSummary.Location = new System.Drawing.Point(753, 521);
-            this.ResultSummary.Name = "ResultSummary";
-            this.ResultSummary.Size = new System.Drawing.Size(126, 20);
-            this.ResultSummary.TabIndex = 6;
-            this.ResultSummary.Text = "Result Summary";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
             this.Controls.Add(this.ResultSummary);
-            this.Controls.Add(this.LabelTime);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.TxtResults);
             this.Controls.Add(this.BtnSubmitQuery);
             this.Controls.Add(this.TxtQuery);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmMain";
-            this.Text = "DB338 0.01 Alpha";
-            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource1)).EndInit();
+            this.Text = "DB338 0.02 Alpha";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,10 +115,7 @@
         private System.Windows.Forms.Button BtnSubmitQuery;
         private System.Windows.Forms.TextBox TxtResults;
         private System.Windows.Forms.Button Clear;
-        private System.Windows.Forms.BindingSource queryResultBindingSource;
-        private System.Windows.Forms.Label LabelTime;
-        private System.Windows.Forms.BindingSource queryResultBindingSource1;
-        private System.Windows.Forms.Label ResultSummary;
+        private System.Windows.Forms.TextBox ResultSummary;
     }
 }
 

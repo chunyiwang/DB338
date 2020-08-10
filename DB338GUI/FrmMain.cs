@@ -52,9 +52,7 @@ namespace DB338GUI
             TxtResults.Text = s;
             int numRow = results.Results.GetUpperBound(0) + 1;
             int numCol = results.Results.GetUpperBound(1) + 1;
-            ResultSummary.Text = numRow + " rows, " + numCol + " columns";
-            LabelTime.Text = "it takes " + results.Time + " Milliseconds";
-
+            ResultSummary.Text = "Results: " + numRow + " rows, " + numCol + " columns" + " returned in " + results.Time + " Milliseconds"; ;
 
         }
 
@@ -63,5 +61,6 @@ namespace DB338GUI
             TxtQuery.Text = "";
 
         }
+
     }
 }
