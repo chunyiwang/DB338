@@ -36,7 +36,10 @@
             this.Clear = new System.Windows.Forms.Button();
             this.LabelTime = new System.Windows.Forms.Label();
             this.queryResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.queryResultBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ResultSummary = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtQuery
@@ -94,11 +97,25 @@
             // 
             this.queryResultBindingSource.DataSource = typeof(DB338Core.QueryResult);
             // 
+            // queryResultBindingSource1
+            // 
+            this.queryResultBindingSource1.DataSource = typeof(DB338Core.QueryResult);
+            // 
+            // ResultSummary
+            // 
+            this.ResultSummary.AutoSize = true;
+            this.ResultSummary.Location = new System.Drawing.Point(753, 521);
+            this.ResultSummary.Name = "ResultSummary";
+            this.ResultSummary.Size = new System.Drawing.Size(126, 20);
+            this.ResultSummary.TabIndex = 6;
+            this.ResultSummary.Text = "Result Summary";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
+            this.Controls.Add(this.ResultSummary);
             this.Controls.Add(this.LabelTime);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.TxtResults);
@@ -108,6 +125,7 @@
             this.Name = "FrmMain";
             this.Text = "DB338 0.01 Alpha";
             ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +138,8 @@
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.BindingSource queryResultBindingSource;
         private System.Windows.Forms.Label LabelTime;
+        private System.Windows.Forms.BindingSource queryResultBindingSource1;
+        private System.Windows.Forms.Label ResultSummary;
     }
 }
 
