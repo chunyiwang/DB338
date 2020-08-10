@@ -18,6 +18,7 @@ namespace DB338Core
         }
 
         public string Name { get => name; set => name = value; }
+        public List<IntSchColumn> Columns { get => columns; set => columns = value; }
 
 
         public string[,] Select(List<string> cols)

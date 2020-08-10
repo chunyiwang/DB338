@@ -33,23 +33,25 @@ namespace DB338GUI
                     MessageBox.Show("Input SQL contained a " + queryResult.Error + " error.");
                 }
                 else {
-                    Output(queryResults);
+                    Output(queryResult);
                 }
             }
         }
 
-        public void Output(string[,] results)
+        public void Output(QueryResult results)
         {
             string s = "";
-            for (int i = 0; i <= results.GetUpperBound(0); ++i)
+            for (int i = 0; i <= results.Results.GetUpperBound(0); ++i)
             {
-                for (int j = 0; j <= results.GetUpperBound(1); ++j)
+                for (int j = 0; j <= results.Results.GetUpperBound(1); ++j)
                 {
-                    s += results[i, j] + ", ";
+                    s += results.Results[i, j] + ", ";
                 }
                 s += Environment.NewLine;
             }
             TxtResults.Text = s;
+            LabelTime.Text = "it takes " + results.Time + " Milliseconds";
+
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -57,5 +59,6 @@ namespace DB338GUI
             TxtQuery.Text = "";
 
         }
+
     }
 }

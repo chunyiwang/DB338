@@ -66,12 +66,14 @@ namespace DB338Core
 
             List<string> colsToSelect = new List<string>();
             int tableOffset = 0;
+            int selectAll = 0;
 
             for (int i = 1; i < tokens.Count; ++i)
             {
                 if (tokens[i] == "*" & i == 1)
                 {
-                    colsToSelect.AddRange(tokens);
+                    selectAll = 1;
+                    tableOffset = i + 2;
                     break;
                 }
                 if (tokens[i] == "from")
@@ -95,7 +97,16 @@ namespace DB338Core
             {
                 if (tables[i].Name == tableToSelectFrom)
                 {
-                    return tables[i].Select(colsToSelect);
+                    if (selectAll == 0)
+                    {
+                        return tables[i].Select(colsToSelect);
+                    }
+                    else {
+                        var cols = (from o in tables[i].Columns
+                                       select o.ToString()).ToList();
+                        return tables[i].Select(cols);
+
+                    }
                 }
             }
 
@@ -225,15 +236,21 @@ namespace DB338Core
         private string[,] ProcessUpdateStatement(List<string> tokens)
         {
             string updateTableName = tokens[2];
-            foreach (IntSchTable tbl in tables)
+            IntSchTable table = getTable(updateTableName);
+            int setIndex = tokens.IndexOf("set");
+            int whereIndex = tokens.IndexOf("where");
+
+            if (setIndex == -1)
             {
-                if (tbl.Name == updateTableName)
-                {
-                    //cannot create a new table with the same name
-                    
-                }
+                MessageBox.Show("no set in the update statement");
             }
-            throw new NotImplementedException();
+
+            if (whereIndex == -1)
+            {
+
+            }
+
+                throw new NotImplementedException();
         }
 
         private void ProcessDropStatement(List<string> tokens)

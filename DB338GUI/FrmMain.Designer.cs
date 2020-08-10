@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.TxtQuery = new System.Windows.Forms.TextBox();
             this.BtnSubmitQuery = new System.Windows.Forms.Button();
             this.TxtResults = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
+            this.LabelTime = new System.Windows.Forms.Label();
+            this.queryResultBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtQuery
@@ -77,11 +81,25 @@
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // LabelTime
+            // 
+            this.LabelTime.AutoSize = true;
+            this.LabelTime.Location = new System.Drawing.Point(753, 560);
+            this.LabelTime.Name = "LabelTime";
+            this.LabelTime.Size = new System.Drawing.Size(43, 20);
+            this.LabelTime.TabIndex = 5;
+            this.LabelTime.Text = "Time";
+            // 
+            // queryResultBindingSource
+            // 
+            this.queryResultBindingSource.DataSource = typeof(DB338Core.QueryResult);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
+            this.Controls.Add(this.LabelTime);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.TxtResults);
             this.Controls.Add(this.BtnSubmitQuery);
@@ -89,6 +107,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmMain";
             this.Text = "DB338 0.01 Alpha";
+            ((System.ComponentModel.ISupportInitialize)(this.queryResultBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,6 +118,8 @@
         private System.Windows.Forms.Button BtnSubmitQuery;
         private System.Windows.Forms.TextBox TxtResults;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.BindingSource queryResultBindingSource;
+        private System.Windows.Forms.Label LabelTime;
     }
 }
 

@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace DB338Core
@@ -40,8 +41,13 @@ namespace DB338Core
 
             if (accepted == "True")
             {
+                DateTime startTime = DateTime.Now;
                 string[,] results = transactionMgr.Process(tokens, queryType);
+                DateTime endTime = DateTime.Now;
                 QueryResult queryResult = new QueryResult(queryType, done, accepted, error);
+                TimeSpan span = endTime - startTime;
+                double time = (double)span.TotalMilliseconds;
+                queryResult.Time = time;
                 queryResult.Results = results;
                 return queryResult;
             }
