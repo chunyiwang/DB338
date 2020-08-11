@@ -32,36 +32,29 @@ namespace DB338GUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.TxtQuery = new System.Windows.Forms.TextBox();
-            this.BtnSubmitQuery = new System.Windows.Forms.Button();
             this.TxtResults = new System.Windows.Forms.TextBox();
             this.ResultSummary = new System.Windows.Forms.TextBox();
-            this.Clear = new System.Windows.Forms.Button();
-            this.Save = new System.Windows.Forms.Button();
-            this.Print = new System.Windows.Forms.Button();
+            this.SaveBox = new System.Windows.Forms.PictureBox();
+            this.PrintBox = new System.Windows.Forms.PictureBox();
+            this.ClearBox = new System.Windows.Forms.PictureBox();
+            this.BtnSubmitQueryBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClearBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnSubmitQueryBox)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtQuery
             // 
             this.TxtQuery.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtQuery.Location = new System.Drawing.Point(18, 18);
+            this.TxtQuery.Location = new System.Drawing.Point(18, 80);
             this.TxtQuery.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtQuery.Multiline = true;
             this.TxtQuery.Name = "TxtQuery";
             this.TxtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TxtQuery.Size = new System.Drawing.Size(1006, 230);
+            this.TxtQuery.Size = new System.Drawing.Size(1127, 168);
             this.TxtQuery.TabIndex = 1;
             this.TxtQuery.Text = resources.GetString("TxtQuery.Text");
-            // 
-            // BtnSubmitQuery
-            // 
-            this.BtnSubmitQuery.Location = new System.Drawing.Point(1035, 92);
-            this.BtnSubmitQuery.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BtnSubmitQuery.Name = "BtnSubmitQuery";
-            this.BtnSubmitQuery.Size = new System.Drawing.Size(144, 45);
-            this.BtnSubmitQuery.TabIndex = 2;
-            this.BtnSubmitQuery.Text = "Run";
-            this.BtnSubmitQuery.UseVisualStyleBackColor = true;
-            this.BtnSubmitQuery.Click += new System.EventHandler(this.BtnSubmitQuery_Click);
             // 
             // TxtResults
             // 
@@ -71,7 +64,7 @@ namespace DB338GUI
             this.TxtResults.Multiline = true;
             this.TxtResults.Name = "TxtResults";
             this.TxtResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.TxtResults.Size = new System.Drawing.Size(1006, 217);
+            this.TxtResults.Size = new System.Drawing.Size(1127, 217);
             this.TxtResults.TabIndex = 3;
             // 
             // ResultSummary
@@ -81,56 +74,73 @@ namespace DB338GUI
             this.ResultSummary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ResultSummary.Multiline = true;
             this.ResultSummary.Name = "ResultSummary";
-            this.ResultSummary.Size = new System.Drawing.Size(1006, 114);
+            this.ResultSummary.Size = new System.Drawing.Size(1127, 114);
             this.ResultSummary.TabIndex = 7;
             // 
-            // Clear
+            // SaveBox
             // 
-            this.Clear.Location = new System.Drawing.Point(1035, 37);
-            this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(143, 41);
-            this.Clear.TabIndex = 4;
-            this.Clear.Text = "Clear";
-            this.Clear.UseVisualStyleBackColor = true;
-            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            this.SaveBox.Image = global::EduDBGUI.Properties.Resources.Save_icon;
+            this.SaveBox.Location = new System.Drawing.Point(153, 12);
+            this.SaveBox.Name = "SaveBox";
+            this.SaveBox.Size = new System.Drawing.Size(110, 59);
+            this.SaveBox.TabIndex = 11;
+            this.SaveBox.TabStop = false;
+            this.SaveBox.Click += new System.EventHandler(this.SaveBox_Click);
+            this.SaveBox.MouseHover += new System.EventHandler(this.SaveBox_MouseHover);
             // 
-            // Save
+            // PrintBox
             // 
-            this.Save.Location = new System.Drawing.Point(1035, 147);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(144, 45);
-            this.Save.TabIndex = 8;
-            this.Save.Text = "Save SQL File";
-            this.Save.UseVisualStyleBackColor = true;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.PrintBox.Image = global::EduDBGUI.Properties.Resources.Printer_icon;
+            this.PrintBox.InitialImage = null;
+            this.PrintBox.Location = new System.Drawing.Point(279, 12);
+            this.PrintBox.Name = "PrintBox";
+            this.PrintBox.Size = new System.Drawing.Size(110, 59);
+            this.PrintBox.TabIndex = 10;
+            this.PrintBox.TabStop = false;
+            this.PrintBox.Click += new System.EventHandler(this.PrintBox_Click);
+            this.PrintBox.MouseHover += new System.EventHandler(this.PrintBox_MouseHover);
             // 
-            // Print
+            // ClearBox
             // 
-            this.Print.Location = new System.Drawing.Point(1035, 203);
-            this.Print.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Print.Name = "Print";
-            this.Print.Size = new System.Drawing.Size(144, 45);
-            this.Print.TabIndex = 9;
-            this.Print.Text = "Print";
-            this.Print.UseVisualStyleBackColor = true;
-            this.Print.Click += new System.EventHandler(this.Print_Click);
+            this.ClearBox.Image = global::EduDBGUI.Properties.Resources.Eraser_icon;
+            this.ClearBox.Location = new System.Drawing.Point(408, 12);
+            this.ClearBox.Name = "ClearBox";
+            this.ClearBox.Size = new System.Drawing.Size(110, 59);
+            this.ClearBox.TabIndex = 12;
+            this.ClearBox.TabStop = false;
+            this.ClearBox.Click += new System.EventHandler(this.ClearBox_Click);
+            this.ClearBox.MouseHover += new System.EventHandler(this.ClearBox_MouseHover);
+            // 
+            // BtnSubmitQueryBox
+            // 
+            this.BtnSubmitQueryBox.Image = global::EduDBGUI.Properties.Resources.Start_icon;
+            this.BtnSubmitQueryBox.Location = new System.Drawing.Point(30, 12);
+            this.BtnSubmitQueryBox.Name = "BtnSubmitQueryBox";
+            this.BtnSubmitQueryBox.Size = new System.Drawing.Size(110, 59);
+            this.BtnSubmitQueryBox.TabIndex = 13;
+            this.BtnSubmitQueryBox.TabStop = false;
+            this.BtnSubmitQueryBox.Click += new System.EventHandler(this.BtnSubmitQueryBox_Click);
+            this.BtnSubmitQueryBox.MouseHover += new System.EventHandler(this.BtnSubmitQueryBox_MouseHover);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
-            this.Controls.Add(this.Print);
-            this.Controls.Add(this.Save);
+            this.Controls.Add(this.BtnSubmitQueryBox);
+            this.Controls.Add(this.ClearBox);
+            this.Controls.Add(this.SaveBox);
+            this.Controls.Add(this.PrintBox);
             this.Controls.Add(this.ResultSummary);
-            this.Controls.Add(this.Clear);
             this.Controls.Add(this.TxtResults);
-            this.Controls.Add(this.BtnSubmitQuery);
             this.Controls.Add(this.TxtQuery);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmMain";
             this.Text = "DB338 0.02 Alpha";
+            ((System.ComponentModel.ISupportInitialize)(this.SaveBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClearBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnSubmitQueryBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,12 +148,12 @@ namespace DB338GUI
 
         #endregion
         private System.Windows.Forms.TextBox TxtQuery;
-        private System.Windows.Forms.Button BtnSubmitQuery;
         private System.Windows.Forms.TextBox TxtResults;
-        private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.TextBox ResultSummary;
-        private Button Save;
-        private Button Print;
+        private PictureBox PrintBox;
+        private PictureBox SaveBox;
+        private PictureBox ClearBox;
+        private PictureBox BtnSubmitQueryBox;
     }
 }
 

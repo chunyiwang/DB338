@@ -23,7 +23,7 @@ namespace DB338GUI
             db = new DB338();
         }
 
-        private void BtnSubmitQuery_Click(object sender, EventArgs e)
+        private void BtnSubmitQueryBox_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < TxtQuery.Lines.Length; ++i)
             {
@@ -58,13 +58,31 @@ namespace DB338GUI
 
         }
 
-        private void Clear_Click(object sender, EventArgs e)
-        {
-            TxtQuery.Text = "";
 
+
+        private void PrintDocumentOnPrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString(TxtQuery.Text, TxtQuery.Font, Brushes.Black, 10, 25);
         }
 
-        private void Save_Click(object sender, EventArgs e)
+        private void PrintBox_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                PrintDocument document = new PrintDocument();
+                document.PrintPage += PrintDocumentOnPrintPage;
+                document.Print();
+            }
+        }
+
+        private void PrintBox_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.PrintBox, "Print SQL Query");
+        }
+
+        private void SaveBox_Click(object sender, EventArgs e)
         {
             SaveFileDialog sf = new SaveFileDialog();
             sf.Filter = "Text files (*.txt)|*.sql";
@@ -76,20 +94,28 @@ namespace DB338GUI
             }
         }
 
-        private void PrintDocumentOnPrintPage(object sender, PrintPageEventArgs e)
+        private void SaveBox_MouseHover(object sender, EventArgs e)
         {
-            e.Graphics.DrawString(TxtQuery.Text, TxtQuery.Font, Brushes.Black, 10, 25);
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.SaveBox, "Save SQL File");
         }
 
-        private void Print_Click(object sender, EventArgs e)
+        private void ClearBox_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                PrintDocument document = new PrintDocument();
-                document.PrintPage += PrintDocumentOnPrintPage;
-                document.Print();
-            }
+            TxtQuery.Text = "";
+        }
+
+        private void ClearBox_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.ClearBox, "Clear SQL Query");
+        }
+
+
+        private void BtnSubmitQueryBox_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.BtnSubmitQueryBox, "Run SQL Query");
         }
     }
 }
