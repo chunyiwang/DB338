@@ -73,6 +73,16 @@ namespace EduDBGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap File_CSV_icon {
+            get {
+                object obj = ResourceManager.GetObject("File_CSV_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Printer_icon {
             get {
                 object obj = ResourceManager.GetObject("Printer_icon", resourceCulture);

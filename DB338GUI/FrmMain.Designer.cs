@@ -38,10 +38,12 @@ namespace DB338GUI
             this.PrintBox = new System.Windows.Forms.PictureBox();
             this.ClearBox = new System.Windows.Forms.PictureBox();
             this.BtnSubmitQueryBox = new System.Windows.Forms.PictureBox();
+            this.SaveResult = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.SaveBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrintBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClearBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnSubmitQueryBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveResult)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtQuery
@@ -122,11 +124,23 @@ namespace DB338GUI
             this.BtnSubmitQueryBox.Click += new System.EventHandler(this.BtnSubmitQueryBox_Click);
             this.BtnSubmitQueryBox.MouseHover += new System.EventHandler(this.BtnSubmitQueryBox_MouseHover);
             // 
+            // SaveResult
+            // 
+            this.SaveResult.Image = global::EduDBGUI.Properties.Resources.File_CSV_icon;
+            this.SaveResult.Location = new System.Drawing.Point(537, 12);
+            this.SaveResult.Name = "SaveResult";
+            this.SaveResult.Size = new System.Drawing.Size(110, 59);
+            this.SaveResult.TabIndex = 15;
+            this.SaveResult.TabStop = false;
+            this.SaveResult.Click += new System.EventHandler(this.SaveResult_Click);
+            this.SaveResult.MouseHover += new System.EventHandler(this.SaveResult_MouseHover);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
+            this.Controls.Add(this.SaveResult);
             this.Controls.Add(this.BtnSubmitQueryBox);
             this.Controls.Add(this.ClearBox);
             this.Controls.Add(this.SaveBox);
@@ -141,6 +155,7 @@ namespace DB338GUI
             ((System.ComponentModel.ISupportInitialize)(this.PrintBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClearBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BtnSubmitQueryBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SaveResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,6 +169,7 @@ namespace DB338GUI
         private PictureBox SaveBox;
         private PictureBox ClearBox;
         private PictureBox BtnSubmitQueryBox;
+        private PictureBox SaveResult;
     }
 }
 

@@ -117,5 +117,24 @@ namespace DB338GUI
             ToolTip tt = new ToolTip();
             tt.SetToolTip(this.BtnSubmitQueryBox, "Run SQL Query");
         }
+
+        private void SaveResult_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Filter = "Text files (*.txt)|*.csv";
+            sf.FilterIndex = 2;
+            sf.RestoreDirectory = true;
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(sf.FileName, TxtResults.Text);
+            }
+
+        }
+
+        private void SaveResult_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.SaveResult, "Save Result to CSV");
+        }
     }
 }
