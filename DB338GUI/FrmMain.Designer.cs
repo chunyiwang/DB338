@@ -36,6 +36,8 @@ namespace DB338GUI
             this.TxtResults = new System.Windows.Forms.TextBox();
             this.ResultSummary = new System.Windows.Forms.TextBox();
             this.Clear = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
+            this.Print = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TxtQuery
@@ -45,10 +47,10 @@ namespace DB338GUI
             this.TxtQuery.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtQuery.Multiline = true;
             this.TxtQuery.Name = "TxtQuery";
+            this.TxtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TxtQuery.Size = new System.Drawing.Size(1006, 230);
             this.TxtQuery.TabIndex = 1;
             this.TxtQuery.Text = resources.GetString("TxtQuery.Text");
-            this.TxtQuery.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             // 
             // BtnSubmitQuery
             // 
@@ -92,11 +94,35 @@ namespace DB338GUI
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
             // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(1035, 147);
+            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(144, 45);
+            this.Save.TabIndex = 8;
+            this.Save.Text = "Save SQL File";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
+            // Print
+            // 
+            this.Print.Location = new System.Drawing.Point(1035, 203);
+            this.Print.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Print.Name = "Print";
+            this.Print.Size = new System.Drawing.Size(144, 45);
+            this.Print.TabIndex = 9;
+            this.Print.Text = "Print";
+            this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.Print_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1197, 615);
+            this.Controls.Add(this.Print);
+            this.Controls.Add(this.Save);
             this.Controls.Add(this.ResultSummary);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.TxtResults);
@@ -116,6 +142,8 @@ namespace DB338GUI
         private System.Windows.Forms.TextBox TxtResults;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.TextBox ResultSummary;
+        private Button Save;
+        private Button Print;
     }
 }
 

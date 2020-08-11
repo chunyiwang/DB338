@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DB338Core;
+using System.Drawing.Printing;
 
 namespace DB338GUI
 {
@@ -62,5 +64,32 @@ namespace DB338GUI
 
         }
 
+        private void Save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+            sf.Filter = "Text files (*.txt)|*.sql";
+            sf.FilterIndex = 2;
+            sf.RestoreDirectory = true;
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(sf.FileName, TxtQuery.Text);
+            }
+        }
+
+        private void PrintDocumentOnPrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString(TxtQuery.Text, TxtQuery.Font, Brushes.Black, 10, 25);
+        }
+
+        private void Print_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                PrintDocument document = new PrintDocument();
+                document.PrintPage += PrintDocumentOnPrintPage;
+                document.Print();
+            }
+        }
     }
 }
