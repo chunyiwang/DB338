@@ -99,7 +99,7 @@
     <None Include="Resource\Eraser-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\File-CSV-icon.png" />
+    <None Include="Resource\File-CSV-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,11 +64,23 @@ namespace DB338Core
         private string[,] ProcessSelectStatement(List<string> tokens)
         {
             // <Select Stm> ::= SELECT <Columns> <From Clause> <Where Clause> <Group Clause> <Having Clause> <Order Clause>
-
+            tokens = tokens.Select(x => x.ToLower()).ToList();
             List<string> colsToSelect = new List<string>();
             int tableOffset = 0;
             int selectAll = 0;
+            int whereIndex = tokens.IndexOf("where");
+            int endIndex = tokens.Count();
+            var conditions = new List<Tuple<string, string, string>>();
 
+            if (whereIndex != -1)
+            {
+                for(int i = whereIndex + 1; i < tokens.Count; i += 4)
+                {
+                    conditions.Add(new Tuple<string, string, string>(tokens[i], tokens[i + 1], tokens[i + 2]));
+                }
+            }
+
+           
             for (int i = 1; i < tokens.Count; ++i)
             {
                 if (tokens[i] == "*" & i == 1)
@@ -76,7 +89,7 @@ namespace DB338Core
                     tableOffset = i + 2;
                     break;
                 }
-                if (tokens[i] == "from")
+                else if (tokens[i] == "from")
                 {
                     tableOffset = i + 1;
                     break;
@@ -102,9 +115,8 @@ namespace DB338Core
                         return tables[i].Select(colsToSelect);
                     }
                     else {
-                        var cols = (from o in tables[i].Columns
-                                       select o.ToString()).ToList();
-                        return tables[i].Select(cols);
+                        colsToSelect = new List<string>(new string[] {"*"});
+                        return tables[i].Select(colsToSelect);
 
                     }
                 }
@@ -116,7 +128,7 @@ namespace DB338Core
         private bool ProcessInsertStatement(List<string> tokens)
         {
             // <Insert Stm> ::= INSERT INTO Id '(' <ID List> ')' VALUES '(' <Expr List> ')'
-
+            tokens = tokens.Select(x => x.ToLower()).ToList();
             string insertTableName = tokens[2];
 
             foreach (IntSchTable tbl in tables)
@@ -180,7 +192,7 @@ namespace DB338Core
         {
             // assuming only the following rule is accepted
             // <Create Stm> ::= CREATE TABLE Id '(' <ID List> ')'  ------ NO SUPPORT for <Constraint Opt>
-
+            tokens = tokens.Select(x => x.ToLower()).ToList();
             string newTableName = tokens[2];
 
             foreach (IntSchTable tbl in tables)
@@ -188,6 +200,7 @@ namespace DB338Core
                 if (tbl.Name == newTableName)
                 {
                     //cannot create a new table with the same name
+                    MessageBox.Show("the table " + newTableName + " already existed");
                     return false;
                 }
             }
@@ -235,33 +248,48 @@ namespace DB338Core
 
         private string[,] ProcessUpdateStatement(List<string> tokens)
         {
+            tokens = tokens.Select(x => x.ToLower()).ToList();
             string updateTableName = tokens[2];
             IntSchTable table = getTable(updateTableName);
             int setIndex = tokens.IndexOf("set");
             int whereIndex = tokens.IndexOf("where");
+            List<string> cols = new List <string>();
+            List<string> vals = new List<string>();
+            int endIndex = tokens.Count() + 1;
 
             if (setIndex == -1)
             {
                 MessageBox.Show("no set in the update statement");
             }
 
-            if (whereIndex == -1)
+            if (whereIndex != -1)
             {
-
+                endIndex = whereIndex;
+                
             }
 
-                throw new NotImplementedException();
+            for (int i = setIndex + 1; i < endIndex; i += 4)
+            {
+                cols.Add(tokens[i]);
+                vals.Add(tokens[i + 2]);
+            }
+
+
+
+
+            return table.Update(cols, vals);
         }
 
         private void ProcessDropStatement(List<string> tokens)
         {
+            tokens = tokens.Select(x => x.ToLower()).ToList();
             string dropTableName = tokens[2];
             if (getTable(dropTableName) != null) {
                 tables.Remove(getTable(dropTableName));
                 MessageBox.Show("Table " + dropTableName + " is successfully dropped");
             }
-        } 
-            
+        }
+
 
         private string[,] ProcessDeleteStatement(List<string> tokens)
         {
