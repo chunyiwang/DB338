@@ -124,4 +124,7 @@ insert into test(col1, col2, col3) values(1000, 2000, 3000)
 insert into test(col1, col2, col3) values(10000, 20000, 30000)
 select col1, col2, col3 from test</value>
   </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>

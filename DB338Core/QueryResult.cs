@@ -12,6 +12,8 @@ namespace DB338Core
         private string done;
         private string accepted;
         private string error;
+        private double time;
+        private int numRow;
 
         private string[,] results;
 
@@ -22,6 +24,8 @@ namespace DB338Core
             accepted = acc;
             error = err;
             results = null;
+            time = 0;
+            numRow = 0;
         }
 
         public string[,] Results { get => results; set => results = value; }
@@ -29,5 +33,7 @@ namespace DB338Core
         public string Done { get => done; set => done = value; }
         public string Accepted { get => accepted; set => accepted = value; }
         public string Error { get => error; set => error = value; }
+        public double Time { get => time; set => time = value; }
+        public int NumRow { get => NumRow; set => NumRow = value; }
     }
 }
