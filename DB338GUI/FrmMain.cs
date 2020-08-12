@@ -85,7 +85,7 @@ namespace DB338GUI
         private void SaveBox_Click(object sender, EventArgs e)
         {
             SaveFileDialog sf = new SaveFileDialog();
-            sf.Filter = "Text files (*.txt)|*.sql";
+            sf.Filter = "SQL files (*.sql)|*.sql";
             sf.FilterIndex = 2;
             sf.RestoreDirectory = true;
             if (sf.ShowDialog() == DialogResult.OK)
@@ -121,7 +121,7 @@ namespace DB338GUI
         private void SaveResult_Click(object sender, EventArgs e)
         {
             SaveFileDialog sf = new SaveFileDialog();
-            sf.Filter = "Text files (*.txt)|*.csv";
+            sf.Filter = "CSV files (*.csv)|*.csv";
             sf.FilterIndex = 2;
             sf.RestoreDirectory = true;
             if (sf.ShowDialog() == DialogResult.OK)
