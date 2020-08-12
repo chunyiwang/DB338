@@ -71,12 +71,17 @@ namespace DB338Core
             int whereIndex = tokens.IndexOf("where");
             int endIndex = tokens.Count();
             var conditions = new List<Tuple<string, string, string>>();
+            string logic = null;
 
             if (whereIndex != -1)
             {
                 for(int i = whereIndex + 1; i < tokens.Count; i += 4)
                 {
                     conditions.Add(new Tuple<string, string, string>(tokens[i], tokens[i + 1], tokens[i + 2]));
+                    if (i + 4 < tokens.Count)
+                    {
+                        logic = tokens[i + 3];
+                    }
                 }
             }
 
@@ -112,11 +117,11 @@ namespace DB338Core
                 {
                     if (selectAll == 0)
                     {
-                        return tables[i].Select(colsToSelect);
+                        return tables[i].SelectResult(colsToSelect, conditions, logic);
                     }
                     else {
                         colsToSelect = new List<string>(new string[] {"*"});
-                        return tables[i].Select(colsToSelect);
+                        return tables[i].SelectResult(colsToSelect, conditions, logic);
 
                     }
                 }
